@@ -1,0 +1,49 @@
+create database invoice;
+
+
+
+use invoice;
+
+
+
+
+create table customer (
+cust_id int primary key auto_increment,
+address varchar(30) not null ,
+ city varchar(20) not null,
+ ph_no INT NOT NULL
+  );
+
+
+ 
+
+create table product (
+p_id int primary key auto_increment,
+pname varchar(20) not null,
+price int default '0');
+
+ 
+
+create table invoice_master(
+ inv_id INT primary key auto_increment,
+ cust_id int,
+constraint cust_id foreign key (cust_id) references customer(cust_id),
+inv_date  date);
+
+
+create table invoice_item(
+inv_id int,
+constraint inv_id foreign key (inv_id) references invoice_master(inv_id),
+p_id int ,
+constraint p_id foreign key (p_id) references product(p_id),
+ quantity int);
+
+
+
+
+
+
+
+
+
+
