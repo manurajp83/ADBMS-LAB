@@ -1,0 +1,76 @@
+QUERY
+--------
+
+
+mysql> use invoice;
+Database changed
+
+
+mysql> create table student(id int primary key auto_increment,name varchar(20),age int,city varchar(30));
+Query OK, 0 rows affected (2.49 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | YES  |     | NULL    |                |
+| age   | int         | YES  |     | NULL    |                |
+| city  | varchar(30) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+
+
+mysql> alter table student add dob int;
+Query OK, 0 rows affected (0.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | YES  |     | NULL    |                |
+| age   | int         | YES  |     | NULL    |                |
+| city  | varchar(30) | YES  |     | NULL    |                |
+| dob   | int         | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+
+
+mysql> alter table student modify dob year;
+Query OK, 0 rows affected (3.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | YES  |     | NULL    |                |
+| age   | int         | YES  |     | NULL    |                |
+| city  | varchar(30) | YES  |     | NULL    |                |
+| dob   | year        | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+5 rows in set (0.04 sec)
+
+
+
+mysql> alter table student drop column city;
+Query OK, 0 rows affected (1.47 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | YES  |     | NULL    |                |
+| age   | int         | YES  |     | NULL    |                |
+| dob   | year        | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql>

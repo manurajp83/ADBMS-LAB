@@ -1,0 +1,118 @@
+mysql> use invoice;
+Database changed
+mysql> select * from student;
++--------+---------+------------+
+| name   | roll_no | department |
++--------+---------+------------+
+| meenu  |      10 | mca        |
+| shilpa |      28 | mca        |
+| shyam  |      20 | mba        |
+| swathi |      27 | mca        |
++--------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> set autocommit=off;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into student values('varun',28,'mca');
+Query OK, 1 row affected (0.36 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> select * from student;
++--------+---------+------------+
+| name   | roll_no | department |
++--------+---------+------------+
+| meenu  |      10 | mca        |
+| shilpa |      28 | mca        |
+| shyam  |      20 | mba        |
+| swathi |      27 | mca        |
+| varun  |      28 | mca        |
++--------+---------+------------+
+5 rows in set (0.11 sec)
+
+mysql> insert into student values('vyshak',29,'mca');
+Query OK, 1 row affected (0.35 sec)
+
+mysql> select * from student;
++--------+---------+------------+
+| name   | roll_no | department |
++--------+---------+------------+
+| meenu  |      10 | mca        |
+| shilpa |      28 | mca        |
+| shyam  |      20 | mba        |
+| swathi |      27 | mca        |
+| varun  |      28 | mca        |
+| vyshak |      29 | mca        |
++--------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> select * from student;
++--------+---------+------------+
+| name   | roll_no | department |
++--------+---------+------------+
+| meenu  |      10 | mca        |
+| shilpa |      28 | mca        |
+| shyam  |      20 | mba        |
+| swathi |      27 | mca        |
+| varun  |      28 | mca        |
++--------+---------+------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into student values('vyshak',29,'mca');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint t1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into student values('yadhu',30,'mca');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++--------+---------+------------+
+| name   | roll_no | department |
++--------+---------+------------+
+| meenu  |      10 | mca        |
+| shilpa |      28 | mca        |
+| shyam  |      20 | mba        |
+| swathi |      27 | mca        |
+| varun  |      29 | mca        |
+| vyshak |      28 | mca        |
+| yadhu  |      30 | mca        |
++--------+---------+------------+
+7 rows in set (0.00 sec)
+
+mysql> rollback to t1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from student;
++--------+---------+------------+
+| name   | roll_no | department |
++--------+---------+------------+
+| meenu  |      10 | mca        |
+| shilpa |      28 | mca        |
+| shyam  |      20 | mba        |
+| swathi |      27 | mca        |
+| varun  |      29 | mca        |
+| vyshak |      28 | mca        |
++--------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+
+
+
+

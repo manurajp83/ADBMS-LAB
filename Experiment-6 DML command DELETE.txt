@@ -1,0 +1,31 @@
+mysql>use invoice;
+Database changed
+mysql> select * from customer;
++---------+-----------------+------------+------------+-----------+
+| cust_id | address         | city       | ph_no      | cust_name |
++---------+-----------------+------------+------------+-----------+
+|       1 | North avenue    | Trivandram | NULL       | Anu       |
+|       2 | Oke street      | Eranakulam | NULL       | meenu     |
+|       3 | Gloriya 21      | Kozicode   | 9595286827 | Ema joby  |
+|       4 | Brockton MA     | Kannur     | 9595286828 | Eva maria |
+|       5 | plymooth strret | kozikode   | 9595286868 | Akhil     |
+|       6 | Lynnway         | Palakad    | 9595286239 | Manu      |
++---------+-----------------+------------+------------+-----------+
+6 rows in set (0.11 sec)
+
+mysql> delete from customer where cust_id=6;
+Query OK, 1 row affected (0.28 sec)
+
+mysql> select * from customer;
++---------+-----------------+------------+------------+-----------+
+| cust_id | address         | city       | ph_no      | cust_name |
++---------+-----------------+------------+------------+-----------+
+|       1 | North avenue    | Trivandram | NULL       | Anu       |
+|       2 | Oke street      | Eranakulam | NULL       | meenu     |
+|       3 | Gloriya 21      | Kozicode   | 9595286827 | Ema joby  |
+|       4 | Brockton MA     | Kannur     | 9595286828 | Eva maria |
+|       5 | plymooth strret | kozikode   | 9595286868 | Akhil     |
++---------+-----------------+------------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql>

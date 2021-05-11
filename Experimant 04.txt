@@ -1,0 +1,169 @@
+===== Insert values into customer table =====
+mysql> INSERT INTO customer (cust_id, name, address, city, ph_no) values(1001,'Arun','court road', 'ekm', '9876543210');
+Query OK, 1 row affected (0.08 sec)
+mysql> insert into customer (cust_id, name, address, city, ph_no) values(1002,'Sabastian','Velippattil', 'mlp', '9898674522');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO customer (cust_id, name, address, city, ph_no) values(1003,'Arshad','Kizhakkethil', 'tvm', '9900998800');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO customer (cust_id, name, address, city, ph_no) values(1004,'Jacob','Kunnath', 'ekm', '8866442211');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO customer (cust_id, name, address, city, ph_no) values(1005,'Mebin','Alayil', 'ksd',null );
+Query OK, 1 row affected (0.08 sec)
+
+
+mysql> SELECT * FROM customer;
++---------+--------------+------+------------+-----------+
+| cust_id | address      | city | ph_no      | name      |
++---------+--------------+------+------------+-----------+
+|    1001 | court road   | ekm  | 9876543210 | Arun      |
+|    1002 | Velippattil  | mlp  | 9898674522 | Sabastian |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad    |
+|    1004 | Kunnath      | ekm  | 8866442211 | Jacob     |
+|    1005 | Alayil       | ksd  | NULL       | Mebin     |
++---------+--------------+------+------------+-----------+
+5 rows in set (0.00 sec)
+
+
+------------------------------------------------------
+
+===== Insert values into product table =====
+mysql> INSERT INTO product VALUES(10002,'coconut oil',140);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO product VALUES(10003,'chilly powder',66);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO product VALUES(10004,'coconut oil',162);
+Query OK, 1 row affected (0.13 sec)
+mysql> INSERT INTO product VALUES(10005,'pen',34);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO product VALUES(10006,'pencil',12);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO product VALUES(10007,'notebook',82);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO product VALUES(10009,'scale',54);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> INSERT INTO product VALUES(10010,'eraser',30);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO product VALUES(10011,'instrument box',140);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO product VALUES(10012,'writing pad',75);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO product VALUES(10013,'notebook',34);
+Query OK, 1 row affected (0.20 sec)
+
+
+mysql> SELECT * FROM product;
++-------+----------------+-------+
+| p_id  | p_name         | price |
++-------+----------------+-------+
+| 10001 | soap           |    34 |
+| 10002 | coconut oil    |   140 |
+| 10003 | chilly powder  |    66 |
+| 10004 | coconut oil    |   162 |
+| 10005 | pen            |    34 |
+| 10006 | pencil         |    12 |
+| 10007 | notebook       |    82 |
+| 10009 | scale          |    54 |
+| 10010 | eraser         |    30 |
+| 10011 | instrument box |   140 |
+| 10012 | writing pad    |    75 |
++-------+----------------+-------+
+11 rows in set (0.01 sec)
+
+
+---------------------------------------------------------------
+
+===== Insert values into invoice_master table =====
+mysql> INSERT INTO invoice_master VALUES(100001,'2021-01-01',1003);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO invoice_master VALUES(100021,'2021-02-14',1005);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO invoice_master VALUES(100010,'2021-01-23',1003);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> INSERT INTO invoice_master VALUES(100013,'2021-01-31',1002);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> INSERT INTO invoice_master VALUES(100036,'2021-03-25',1001);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO invoice_master VALUES(100040,'2021-04-12',1001);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO invoice_master VALUES(100045,'2021-04-28',1004);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> INSERT INTO invoice_master VALUES(100050,'2021-05-04',1002);
+Query OK, 1 row affected (0.09 sec)
+
+
+mysql> SELECT * FROM invoice_master;
++--------+------------+---------+
+| inv_id | inv_date   | cust_id |
++--------+------------+---------+
+| 100001 | 2021-01-01 |    1003 |
+| 100010 | 2021-01-23 |    1003 |
+| 100013 | 2021-01-31 |    1002 |
+| 100021 | 2021-02-14 |    1005 |
+| 100036 | 2021-03-25 |    1001 |
+| 100040 | 2021-04-12 |    1001 |
+| 100045 | 2021-04-28 |    1004 |
+| 100050 | 2021-05-04 |    1002 |
++--------+------------+---------+
+8 rows in set (0.01 sec)
+
+
+---------------------------------------------------------------
+
+===== Insert values into invoice_item table=====
+mysql> INSERT INTO invoice_item VALUES(100001,'10005',2);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO invoice_item VALUES(100001,'10006',2);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO invoice_item VALUES(100001,'10007',6);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO invoice_item VALUES(100001,'10009',1);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO invoice_item VALUES(100001,'10010',1);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO invoice_item VALUES(100010,'10003',2);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO invoice_item VALUES(100010,'10005',1);
+Query OK, 1 row affected (0.06 sec)
+
+
+mysql> SELECT * FROM invoice_item;
++--------+-------+----------+
+| inv_id | p_id  | quantity |
++--------+-------+----------+
+| 100001 | 10005 |        2 |
+| 100001 | 10006 |        2 |
+| 100001 | 10007 |        6 |
+| 100001 | 10009 |        1 |
+| 100001 | 10010 |        1 |
+| 100010 | 10003 |        2 |
+| 100010 | 10005 |        1 |
++--------+-------+----------+
+7 rows in set (0.00 sec)
+
+---------------------------------------------------------------------
+

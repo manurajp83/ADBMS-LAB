@@ -1,0 +1,53 @@
+
+QUERY
+-----
+
+
+mysql> use invoice;
+Database changed
+
+
+mysql> show tables;
++-------------------+
+| Tables_in_invoice |
++-------------------+
+| customer          |
+| invoice_item      |
+| invoice_master    |
+| product           |
+| student           |
++-------------------+
+5 rows in set (0.06 sec)
+
+
+
+mysql> desc student;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | YES  |     | NULL    |                |
+| age   | int         | YES  |     | NULL    |                |
+| dob   | year        | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+
+mysql> drop table student;
+Query OK, 0 rows affected (0.61 sec)
+
+
+
+mysql> show tables;
++-------------------+
+| Tables_in_invoice |
++-------------------+
+| customer          |
+| invoice_item      |
+| invoice_master    |
+| product           |
++-------------------+
+4 rows in set (0.11 sec)
+
+mysql>
+
