@@ -1,0 +1,208 @@
+
+ 1. List all customer details 
+mysql> SELECT * FROM customer;
++---------+--------------+------+------------+-----------+
+| cust_id | address      | city | ph_no      | name      |
++---------+--------------+------+------------+-----------+
+|    1001 | court road   | ekm  | 9876543210 | Arun      |
+|    1002 | Velippattil  | mlp  | 9898674522 | Sabastian |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad    |
+|    1004 | Kunnath      | ekm  | 8866442211 | Jacob     |
+|    1005 | Alayil       | ksd  | NULL       | Mebin     |
++---------+--------------+------+------------+-----------+
+5 rows in set (0.00 sec)
+
+ 2. List p_name,price of all products 
+mysql> SELECT p_name,price FROM product;
++----------------+-------+
+| p_name         | price |
++----------------+-------+
+| soap           |    34 |
+| coconut oil    |   140 |
+| chilly powder  |    66 |
+| coconut oil    |   162 |
+| pen            |    34 |
+| pencil         |    12 |
+| notebook       |    82 |
+| scale          |    54 |
+| eraser         |    30 |
+| instrument box |   140 |
+| writing pad    |    75 |
++----------------+-------+
+11 rows in set (0.00 sec)
+
+
+ 3. List all invoice items, avoid duplicates 
+mysql> SELECT DISTINCT p_id from invoice_item;
++-------+
+| p_id  |
++-------+
+| 10003 |
+| 10005 |
+| 10006 |
+| 10007 |
+| 10009 |
+| 10010 |
++-------+
+6 rows in set (0.00 sec)
+
+ 4. List product price between 50rs and 150rs 
+mysql> SELECT * FROM product WHERE price BETWEEN 50 AND 150;
++-------+----------------+-------+
+| p_id  | p_name         | price |
++-------+----------------+-------+
+| 10002 | coconut oil    |   140 |
+| 10003 | chilly powder  |    66 |
+| 10007 | notebook       |    82 |
+| 10009 | scale          |    54 |
+| 10011 | instrument box |   140 |
+| 10012 | writing pad    |    75 |
++-------+----------------+-------+
+6 rows in set (0.00 sec)
+
+
+ 5. List the customer details who lives in ‘ekm’,’tvm’ 
+mysql> SELECT * FROM customer WHERE city IN ('ekm','tvm');
++---------+--------------+------+------------+--------+
+| cust_id | address      | city | ph_no      | name   |
++---------+--------------+------+------------+--------+
+|    1001 | court road   | ekm  | 9876543210 | Arun   |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad |
+|    1004 | Kunnath      | ekm  | 8866442211 | Jacob  |
++---------+--------------+------+------------+--------+
+3 rows in set (0.01 sec)
+
+
+ 6. List the invoice details from 1st January 2021 to 31st march 2021 
+mysql> SELECT * FROM invoice_master WHERE inv_date BETWEEN '2021-01-01' AND '2021-03-31';
++--------+------------+---------+
+| inv_id | inv_date   | cust_id |
++--------+------------+---------+
+| 100001 | 2021-01-01 |    1003 |
+| 100010 | 2021-01-23 |    1003 |
+| 100013 | 2021-01-31 |    1002 |
+| 100021 | 2021-02-14 |    1005 |
+| 100036 | 2021-03-25 |    1001 |
++--------+------------+---------+
+5 rows in set (0.00 sec)
+
+
+ 7. List the customer details who not live in ‘tvm’ 
+mysql> SELECT * FROM customer WHERE city != 'tvm';
++---------+-------------+------+------------+-----------+
+| cust_id | address     | city | ph_no      | name      |
++---------+-------------+------+------------+-----------+
+|    1001 | court road  | ekm  | 9876543210 | Arun      |
+|    1002 | Velippattil | mlp  | 9898674522 | Sabastian |
+|    1004 | Kunnath     | ekm  | 8866442211 | Jacob     |
+|    1005 | Alayil      | ksd  | NULL       | Mebin     |
++---------+-------------+------+------------+-----------+
+4 rows in set (0.00 sec)
+
+
+8. List the customers who have no phone number 
+mysql> SELECT * FROM customer WHERE ph_no IS NULL;
++---------+---------+------+-------+-------+
+| cust_id | address | city | ph_no | name  |
++---------+---------+------+-------+-------+
+|    1005 | Alayil  | ksd  | NULL  | Mebin |
++---------+---------+------+-------+-------+
+1 row in set (0.00 sec)
+
+
+9. Display customer names in descending order 
+mysql> SELECT * FROM customer ORDER BY name DESC;
++---------+--------------+------+------------+-----------+
+| cust_id | address      | city | ph_no      | name      |
++---------+--------------+------+------------+-----------+
+|    1002 | Velippattil  | mlp  | 9898674522 | Sabastian |
+|    1005 | Alayil       | ksd  | NULL       | Mebin     |
+|    1004 | Kunnath      | ekm  | 8866442211 | Jacob     |
+|    1001 | court road   | ekm  | 9876543210 | Arun      |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad    |
++---------+--------------+------+------------+-----------+
+5 rows in set (0.00 sec)
+
+
+
+ 10. Display the customer details sorted in ascending by city and descending by names 
+mysql> SELECT * FROM customer ORDER BY city ASC, name DESC;
++---------+--------------+------+------------+-----------+
+| cust_id | address      | city | ph_no      | name      |
++---------+--------------+------+------------+-----------+
+|    1004 | Kunnath      | ekm  | 8866442211 | Jacob     |
+|    1001 | court road   | ekm  | 9876543210 | Arun      |
+|    1005 | Alayil       | ksd  | NULL       | Mebin     |
+|    1002 | Velippattil  | mlp  | 9898674522 | Sabastian |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad    |
++---------+--------------+------+------------+-----------+
+5 rows in set (0.00 sec)
+
+
+
+ 11. Find the customer names start with ‘A’ 
+mysql> SELECT * FROM customer WHERE name LIKE 'A%';
++---------+--------------+------+------------+--------+
+| cust_id | address      | city | ph_no      | name   |
++---------+--------------+------+------------+--------+
+|    1001 | court road   | ekm  | 9876543210 | Arun   |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad |
++---------+--------------+------+------------+--------+
+2 rows in set (0.00 sec)
+
+ 
+ 
+12. Find the customer names who have ‘e’ or ‘a’ in them 
+mysql> SELECT * FROM customer WHERE name LIKE '%e%' OR name LIKE '%a%';
++---------+--------------+------+------------+-----------+
+| cust_id | address      | city | ph_no      | name      |
++---------+--------------+------+------------+-----------+
+|    1001 | court road   | ekm  | 9876543210 | Arun      |
+|    1002 | Velippattil  | mlp  | 9898674522 | Sabastian |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad    |
+|    1004 | Kunnath      | ekm  | 8866442211 | Jacob     |
+|    1005 | Alayil       | ksd  | NULL       | Mebin     |
++---------+--------------+------+------------+-----------+
+5 rows in set (0.00 sec)
+
+
+
+ 13. Find the customer names who have at least 3 characters 
+mysql> SELECT * FROM customer WHERE name LIKE '___%';
++---------+--------------+------+------------+-----------+
+| cust_id | address      | city | ph_no      | name      |
++---------+--------------+------+------------+-----------+
+|    1001 | court road   | ekm  | 9876543210 | Arun      |
+|    1002 | Velippattil  | mlp  | 9898674522 | Sabastian |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad    |
+|    1004 | Kunnath      | ekm  | 8866442211 | Jacob     |
+|    1005 | Alayil       | ksd  | NULL       | Mebin     |
++---------+--------------+------+------------+-----------+
+5 rows in set (0.00 sec)
+
+
+
+14. List the names of customers their names have ‘r’ in second position 
+mysql> SELECT * FROM customer WHERE name LIKE '_r%';
++---------+--------------+------+------------+--------+
+| cust_id | address      | city | ph_no      | name   |
++---------+--------------+------+------------+--------+
+|    1001 | court road   | ekm  | 9876543210 | Arun   |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad |
++---------+--------------+------+------------+--------+
+2 rows in set (0.00 sec)
+
+
+
+15. Find the customer names start with ‘a’ and are at least 3 characters in length 
+mysql> SELECT * FROM customer WHERE name LIKE 'a__%';
++---------+--------------+------+------------+--------+
+| cust_id | address      | city | ph_no      | name   |
++---------+--------------+------+------------+--------+
+|    1001 | court road   | ekm  | 9876543210 | Arun   |
+|    1003 | Kizhakkethil | tvm  | 9900998800 | Arshad |
++---------+--------------+------+------------+--------+
+2 rows in set (0.00 sec)
+
+
+
