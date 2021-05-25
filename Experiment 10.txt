@@ -1,0 +1,86 @@
+1. List product name, price except soap on price order.
+
+mysql> select p_name,price from product where p_name != 'soap';
++----------------+-------+
+| p_name         | price |
++----------------+-------+
+| coconut oil    |   140 |
+| chilly powder  |    66 |
+| coconut oil    |   162 |
+| pen            |    34 |
+| pencil         |    12 |
+| notebook       |    82 |
+| scale          |    54 |
+| eraser         |    30 |
+| instrument box |   140 |
+| writing pad    |    75 |
++----------------+-------+
+10 rows in set (0.04 sec)
+
+2. Find minimum, maximum and average price of products.
+mysql>  select min(price) from product;
++------------+
+| min(price) |
++------------+
+|         12 |
++------------+
+1 row in set (0.06 sec)
+
+
+mysql>  select max(price) from product;
++------------+
+| max(price) |
++------------+
+|        162 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(price) from product;
++------------+
+| avg(price) |
++------------+
+|    75.3636 |
++------------+
+1 row in set (0.02 sec)
+
+3. Find number of customers in each city.
+mysql> SELECT city,count(city) as count FROM customer GROUP BY city;
++-----------+-------+
+| city      | count |
++-----------+-------+
+| ekm       |     2 |
+| mlp       |     1 |
+| kozhikode |     1 |
+| ksd       |     1 |
+| wayanad   |     1 |
+| kannur    |     1 |
++-----------+-------+
+6 rows in set (0.09 sec)
+
+
+4. Find number of customers in each city, only include city with more than 1 customers.
+
+mysql> SELECT city,count(city) AS count FROM customer  GROUP BY city HAVING count(city) > 1;
++------+-------+
+| city | count |
++------+-------+
+| ekm  |     2 |
++------+-------+
+1 row in set (0.03 sec)
+
+5. Show data as displayed ‘who, where’ Eg: ‘customer1 lives in ekm’.
+mysql>  SELECT CONCAT(name, ' lives in ', city) AS 'who, where' from customer;
++--------------------------+
+| who, where               |
++--------------------------+
+| Arun lives in ekm        |
+| rahul lives in mlp       |
+| aiden lives in kozhikode |
+| arshid lives in ekm      |
+| ain lives in ksd         |
+| sebin lives in wayanad   |
+| vibin lives in kannur    |
++--------------------------+
+7 rows in set (0.06 sec)
+
+mysql>
