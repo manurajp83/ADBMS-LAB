@@ -17,7 +17,7 @@ mysql> select p_name,price from product where p_name != 'soap';
 +----------------+-------+
 10 rows in set (0.04 sec)
 
-2. Find minimum, maximum and average price of products.
+2. Find minimum, maximum and average price of products.    ///CORRECT IT
 mysql>  select min(price) from product;
 +------------+
 | min(price) |
