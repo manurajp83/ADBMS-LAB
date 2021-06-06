@@ -1,0 +1,78 @@
+1. List the product name and quantity of invoice items
+
+mysql> SELECT product.p_name,invoice_item.quantity FROM invoice_item NATURAL JOIN product;
++---------------+----------+
+| p_name        | quantity |
++---------------+----------+
+| pen           |        2 |
+| pencil        |        2 |
+| notebook      |        6 |
+| scale         |        1 |
+| eraser        |        1 |
+| chilly powder |        2 |
+| pen           |        1 |
+| pen           |        1 |
+| pen           |        1 |
+| pencil        |        4 |
+| pencil        |        4 |
++---------------+----------+
+11 rows in set (0.00 sec)
+
+
+
+
+
+2. Display invoice details of the transaction dated ’25-03-2021’
+
+mysql> SELECT * FROM invoice_master NATURAL JOIN invoice_item NATURAL JOIN product NATURAL JOIN customer WHERE inv_date = '2021-03-25'; 
++---------+-------+--------+------------+----------+--------+-------+------------+------------+------------+------+
+| cust_id | p_id  | inv_id | inv_date   | quantity | p_name | price | address    | city       | ph_no      | name |
++---------+-------+--------+------------+----------+--------+-------+------------+------------+------------+------+
+|    1001 | 10005 | 100036 | 2021-03-25 |        1 | pen    |    34 | court road | eranakulam | 9876543210 | Arun |
+|    1001 | 10006 | 100036 | 2021-03-25 |        4 | pencil |    12 | court road | eranakulam | 9876543210 | Arun |
++---------+-------+--------+------------+----------+--------+-------+------------+------------+------------+------+
+2 rows in set (0.00 sec)
+
+
+
+
+3. Display the customer name, product name, invoice date of purchased item ‘pencil’.
+
+mysql> SELECT customer.name,product.p_name,invoice_master.inv_date FROM invoice_master NATURAL JOIN invoice_item NATURAL JOIN product NATURAL JOIN customer WHERE p_name = 'pencil';
++--------+--------+------------+
+| name   | p_name | inv_date   |
++--------+--------+------------+
+| Arshad | pencil | 2021-01-01 |
+| Arun   | pencil | 2021-03-25 |
+| Jacob  | pencil | 2021-04-28 |
++--------+--------+------------+
+3 rows in set (0.00 sec)
+
+
+
+4. Display all customer details and invoice details must include customer has not purchased items.
+
+mysql> SELECT * FROM invoice_master NATURAL JOIN invoice_item  RIGHT JOIN customer ON invoice_master.cust_id = customer.cust_id;
++--------+------------+---------+-------+----------+---------+--------------+------------+------------+-----------+
+| inv_id | inv_date   | cust_id | p_id  | quantity | cust_id | address      | city       | ph_no      | name      |
++--------+------------+---------+-------+----------+---------+--------------+------------+------------+-----------+
+| 100036 | 2021-03-25 |    1001 | 10005 |        1 |    1001 | court road   | eranakulam | 9876543210 | Arun      |
+| 100036 | 2021-03-25 |    1001 | 10006 |        4 |    1001 | court road   | eranakulam | 9876543210 | Arun      |
+|   NULL | NULL       |    NULL |  NULL |     NULL |    1002 | Velippattil  | malappuram | 9446464694 | Sabastian |
+| 100001 | 2021-01-01 |    1003 | 10005 |        2 |    1003 | Kizhakkethil | trivandrum | 9900998800 | Arshad    |
+| 100001 | 2021-01-01 |    1003 | 10006 |        2 |    1003 | Kizhakkethil | trivandrum | 9900998800 | Arshad    |
+| 100001 | 2021-01-01 |    1003 | 10007 |        6 |    1003 | Kizhakkethil | trivandrum | 9900998800 | Arshad    |
+| 100001 | 2021-01-01 |    1003 | 10009 |        1 |    1003 | Kizhakkethil | trivandrum | 9900998800 | Arshad    |
+| 100001 | 2021-01-01 |    1003 | 10010 |        1 |    1003 | Kizhakkethil | trivandrum | 9900998800 | Arshad    |
+| 100010 | 2021-01-23 |    1003 | 10003 |        2 |    1003 | Kizhakkethil | trivandrum | 9900998800 | Arshad    |
+| 100010 | 2021-01-23 |    1003 | 10005 |        1 |    1003 | Kizhakkethil | trivandrum | 9900998800 | Arshad    |
+| 100010 | 2021-01-23 |    1003 | 10005 |        1 |    1003 | Kizhakkethil | trivandrum | 9900998800 | Arshad    |
+| 100045 | 2021-04-28 |    1004 | 10006 |        4 |    1004 | Kunnath      | eranakulam | 8866442211 | Jacob     |
+|   NULL | NULL       |    NULL |  NULL |     NULL |    1005 | Alayil       | kasarkode  | NULL       | Mebin     |
+|   NULL | NULL       |    NULL |  NULL |     NULL |    1006 | Kizhakkethil | kozhikode  | NULL       | Subin     |
++--------+------------+---------+-------+----------+---------+--------------+------------+------------+-----------+
+14 rows in set (0.00 sec)
+
+
+
+
