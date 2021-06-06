@@ -1,0 +1,50 @@
+1.      
+Create
+a view for customers who have purchased products.
+
+mysql> CREATE VIEW purchased_cutomers AS SELECT customer.name FROM invoice_master NATURAL JOIN customer;
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> SELECT * FROM purchased_cutomers;
++-----------+
+| name      |
++-----------+
+| Arun      |
+| Arun      |
+| Sabastian |
+| Sabastian |
+| Arshad    |
+| Arshad    |
+| Jacob     |
++-----------+
+7 rows in set (0.00 sec)
+
+
+
+2.      
+Create
+a view for invoice products[cname,quantity,inv_id,product_id]
+
+mysql> CREATE VIEW invoice_products AS SELECT name, quantity, inv_id, p_id FROM customer NATURAL JOIN invoice_master NATURAL JOIN invoi
+ce_item;
+Query OK, 0 rows affected (0.18 sec)
+
+mysql> SELECT * FROM invoice_products;
++--------+----------+--------+-------+
+| name   | quantity | inv_id | p_id  |
++--------+----------+--------+-------+
+| Arun   |        1 | 100036 | 10005 |
+| Arun   |        4 | 100036 | 10006 |
+| Arshad |        2 | 100001 | 10005 |
+| Arshad |        2 | 100001 | 10006 |
+| Arshad |        6 | 100001 | 10007 |
+| Arshad |        1 | 100001 | 10009 |
+| Arshad |        1 | 100001 | 10010 |
+| Arshad |        2 | 100010 | 10003 |
+| Arshad |        1 | 100010 | 10005 |
+| Arshad |        1 | 100010 | 10005 |
+| Jacob  |        4 | 100045 | 10006 |
++--------+----------+--------+-------+
+11 rows in set (0.00 sec)
+
+
