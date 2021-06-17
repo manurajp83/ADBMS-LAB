@@ -1,0 +1,82 @@
+1. Display all customer id and product id using set operation
+
+mysql>select cust_id as all_id from customer union all select p_id from product;
++--------+
+| all_id |
++--------+
+|  1001  |   
+|  1002  |
+|  1003  |
+|  1004  |
+|  1005  | 
+|  1006  |
+|  1007  |
+| 10001  | 
+| 10002  | 
+| 10003  | 
+| 10004  | 
+| 10005  |
+| 10006  | 
+| 10007  | 
+| 10009  | 
+| 10010  |
+| 10011  | 
+| 10012  | 
++-------+
+18 rows in set (0.01 sec)
+
+
+2. Display product details with an updated price amount(new price= old price+5rs)
+
+mysql> SELECT p_id, p_name, price+5 FROM product;
++-------+----------------+---------+
+| p_id  | p_name         | price+5 |
++-------+----------------+---------+
+| 10001 | soap           |      39 |
+| 10002 | coconut oil    |     145 |
+| 10003 | chilly powder  |      71 |
+| 10004 | coconut oil    |     167 |
+| 10005 | pen            |      39 |
+| 10006 | pencil         |      17 |
+| 10007 | notebook       |      87 |
+| 10009 | scale          |      59 |
+| 10010 | eraser         |      35 |
+| 10011 | instrument box |     145 |
+| 10012 | writing pad    |      80 |
++-------+----------------+---------+
+11 rows in set (0.01 sec)
+
+
+
+
+3. Display customer details who doesn’t have phone number and lives in ‘kozhikode’ city (use logical operators)
+
+mysql> SELECT * FROM customer WHERE city LIKE 'kozhikode' AND ph_no IS NULL;
++---------+--------------+-----------+-------+-------+
+| cust_id | address      | city      | ph_no | name  |
++---------+--------------+-----------+-------+-------+
+|    1006 | Kizhakkethil | kozhikode | NULL  | Subin |
++---------+--------------+-----------+-------+-------+
+1 row in set (0.00 sec)
+
+
+
+
+
+4. List the product names if it finds any records in the invoice items table has quantity = 2 (use special operators)
+
+mysql> SELECT * FROM product WHERE p_id IN (SELECT p_id FROM invoice_item WHERE quantity LIKE 2);
++-------+---------------+-------+
+| p_id  | p_name        | price |
++-------+---------------+-------+
+| 10005 | pen           |    34 |
+| 10006 | pencil        |    12 |
+| 10003 | chilly powder |    66 |
++-------+---------------+-------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+
