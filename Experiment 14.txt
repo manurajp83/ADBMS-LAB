@@ -79,4 +79,4 @@ mysql> SELECT * FROM product WHERE p_id IN (SELECT p_id FROM invoice_item WHERE 
 
 
 
-
+//verified
