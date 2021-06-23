@@ -171,4 +171,4 @@ mysql> SELECT name FROM customer WHERE cust_id IN (SELECT cust_id FROM invoice_m
 
 
 
-
+//verified
