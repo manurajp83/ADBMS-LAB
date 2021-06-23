@@ -75,4 +75,4 @@ mysql> SELECT * FROM invoice_master NATURAL JOIN invoice_item  RIGHT JOIN custom
 
 
 
-
+//verified
