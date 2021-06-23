@@ -2,7 +2,7 @@
 Create
 a view for customers who have purchased products.
 
-mysql> CREATE VIEW purchased_cutomers AS SELECT customer.name FROM invoice_master NATURAL JOIN customer;
+mysql> CREATE VIEW purchased_cutomers AS SELECT customer.name FROM invoice_master NATURAL JOIN customer;    //display distinct name
 Query OK, 0 rows affected (0.23 sec)
 
 mysql> SELECT * FROM purchased_cutomers;
@@ -48,3 +48,5 @@ mysql> SELECT * FROM invoice_products;
 11 rows in set (0.00 sec)
 
 
+
+//verified
