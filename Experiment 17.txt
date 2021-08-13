@@ -1,0 +1,94 @@
+
+mysql> select * from customer;
++---------+-----------+---------+-----------+-----------+
+| CUST_ID | CUST_NAME | ADDRESS | CITY      | PHONE     |
++---------+-----------+---------+-----------+-----------+
+|       1 | AMAL      | ABCD    | KOZHIKODE | 859262220 |c
+|       2 | VIMAL     | DEFG    | EKM       |  99655855 |
+|       3 | ARUN      | HELFG   | TVM       |      NULL |
+|       4 | JOBIN     | LOJFG   | TVM       | 826945554 |
+|       5 | HASHIM    | LUYG    | WYD       |  85856554 |
++---------+-----------+---------+-----------+-----------+
+
+mysql> create table cust_updates(update_id int primary key auto_increment,cust_id int,cust_name varchar(20),address varchar(20),city varchar(20),phone int);
+Query OK, 0 rows affected (2.08 sec)
+
+
+5 rows in set (0.08 sec)
+mysql> delimiter //
+mysql> create trigger cust_updates
+    -> after update
+    -> on customer
+    -> for each row
+    -> begin
+    -> insert into cust_updates
+    -> set cust_id=old.cust_id,cust_name=old.cust_name,address=old.address,city=old.city,phone=old.phone;
+    -> end//
+Query OK, 0 rows affected (0.25 sec)
+
+mysql> update customer set city="TSR" where cust_name='JOBIN';
+Query OK, 1 row affected (0.15 sec)
+
+mysql> select * from customer;
++---------+-----------+---------+-----------+-----------+
+| CUST_ID | CUST_NAME | ADDRESS | CITY      | PHONE     |
++---------+-----------+---------+-----------+-----------+
+|       1 | AMAL      | ABCD    | KOZHIKODE | 859262220 |
+|       2 | VIMAL     | DEFG    | EKM       |  99655855 |
+|       3 | ARUN      | HELFG   | TVM       |      NULL |
+|       4 | JOBIN     | LOJFG   | TSR       | 826945554 |
+|       5 | HASHIM    | LUYG    | WYD       |  85856554 |
++---------+-----------+---------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from cust_updates;
++-----------+---------+---------+------+-----------+-----------+
+| update_id | cust_id | address | city | phone     | cust_name |
++-----------+---------+---------+------+-----------+-----------+
+|         1 |       4 | LOJFG   | TVM  | 826945554 | JOBIN     |
++-----------+---------+---------+------+-----------+-----------+
+1 row in set (0.00 sec)
+
+
+
+
+2.
+
+mysql> delimiter //
+mysql> CREATE TRIGGER set_min_price
+    -> before insert
+    -> ON product for each row
+    -> begin
+    -> if NEW.price<5 then
+    -> set NEW.price = 10;
+    -> END IF;
+    -> END;
+    -> //
+Query OK, 0 rows affected (0.37 sec)
+
+mysql> select * from product;
++------+---------+-------+
+| P_ID | P_NAME  | PRICE |
++------+---------+-------+
+|    1 | SHIRT   |   450 |
+|    2 | JEANS   |   700 |
+|    3 | SOCKS   |   120 |
+|    4 | TOWEL   |    25 |
+|    5 | T-SHIRT |   255 |
++------+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into product values(6,'SURGICAL MASK',3);
+
+mysql> select * from product;
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|    1 | SHIRT         |   450 |
+|    2 | JEANS         |   700 |
+|    3 | SOCKS         |   120 |
+|    4 | TOWEL         |    25 |
+|    5 | T-SHIRT       |   255 |
+|    6 | SURGICAL MASK |    10 |
++------+---------------+-------+
+6 rows in set (0.00 sec)
