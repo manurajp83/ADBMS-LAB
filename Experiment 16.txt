@@ -63,3 +63,6 @@ mysql> select *from invoice_master;
 |      4 |    2 | 2021-02-15 |
 +--------+------+------------+
 4 rows in set (0.00 sec)
+
+
+//verified
