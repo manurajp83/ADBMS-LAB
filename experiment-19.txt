@@ -1,0 +1,84 @@
+1.Write a MongoDB query to create an INVOICE database and collections (CUSTOMER,
+PRODUCT) and its corresponding documents.
+*********************************************************************************
+
+> use INVOICE
+switched to db INVOICE
+
+> db.CUSTOMER.insert({"name":"anu"})
+WriteResult({ "nInserted" : 1 })
+> db.CUSTOMER.insert({"name":"binu","address":"calicut","phno":"12345675"})
+WriteResult({ "nInserted" : 1 })
+> db.CUSTOMER.insert({"name":"diya","address":"malappuram","phno":"8976544356"})
+WriteResult({ "nInserted" : 1 })
+> db.CUSTOMER.insert({"name":"riya","city":"calicut","phno":"124345675"})
+WriteResult({ "nInserted" : 1 })
+> db.CUSTOMER.insert({"name":"riya","city":"kochi","phno":"994345675"})
+WriteResult({ "nInserted" : 1 })
+> db.CUSTOMER.insert({"name":"miya","city":"kasarkode","phno":"8888345675"})
+WriteResult({ "nInserted" : 1 })
+
+
+
+
+> db.PRODUCT.insertMany([
+... {name:"bag",price:"20"},
+... {name:"pen",price:"10"},
+... {name:"pencil",price:"15"}
+... ])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6136202e47b7f4c1ccb85804"),
+                ObjectId("6136202e47b7f4c1ccb85805"),
+                ObjectId("6136202e47b7f4c1ccb85806")
+        ]
+}
+>
+
+
+
+
+2.Write a MongoDB query to find all documents from the collection CUSTOMER
+***************************************************************************
+
+> db.CUSTOMER.find()
+{ "_id" : ObjectId("61361ea747b7f4c1ccb85801"), "name" : "anu" }
+{ "_id" : ObjectId("61361f4e47b7f4c1ccb85802"), "name" : "leena", "address" : "calicut", "phno" : "12345675" }
+{ "_id" : ObjectId("61361f6f47b7f4c1ccb85803"), "name" : "diya", "address" : "malappuram", "phno" : "8976544356" }
+{ "_id" : ObjectId("6136237647b7f4c1ccb85807"), "name" : "riya", "city" : "calicut", "phno" : "124345675" }
+{ "_id" : ObjectId("6136238647b7f4c1ccb85808"), "name" : "riya", "city" : "kochi", "phno" : "994345675" }
+{ "_id" : ObjectId("613623e847b7f4c1ccb85809"), "name" : "miya", "city" : "kasarkode", "phno" : "8888345675" }
+
+
+
+
+
+3.Write a MongoDB query to update the city in the collection CUSTOMER.
+***********************************************************************
+
+> db.CUSTOMER.update({city:'kasarkode'},{$set:{city:'kannur'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+
+> db.CUSTOMER.find()
+{ "_id" : ObjectId("61361ea747b7f4c1ccb85801"), "name" : "anu" }
+{ "_id" : ObjectId("61361f4e47b7f4c1ccb85802"), "name" : "leena", "address" : "calicut", "phno" : "12345675" }
+{ "_id" : ObjectId("61361f6f47b7f4c1ccb85803"), "name" : "diya", "address" : "malappuram", "phno" : "8976544356" }
+{ "_id" : ObjectId("6136237647b7f4c1ccb85807"), "name" : "riya", "city" : "calicut", "phno" : "124345675" }
+{ "_id" : ObjectId("6136238647b7f4c1ccb85808"), "name" : "riya", "city" : "kochi", "phno" : "994345675" }
+{ "_id" : ObjectId("613623e847b7f4c1ccb85809"), "name" : "miya", "city" : "kannur", "phno" : "8888345675" }
+
+
+4.Write a MongoDB query to delete the first matched document whose city is “Calicut”
+****************************************************************************************
+> db.CUSTOMER.deleteOne({city:"calicut"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+> db.CUSTOMER.find()
+{ "_id" : ObjectId("61361ea747b7f4c1ccb85801"), "name" : "anu" }
+{ "_id" : ObjectId("61361f4e47b7f4c1ccb85802"), "name" : "leena", "address" : "calicut", "phno" : "12345675" }
+{ "_id" : ObjectId("61361f6f47b7f4c1ccb85803"), "name" : "diya", "address" : "malappuram", "phno" : "8976544356" }
+{ "_id" : ObjectId("6136238647b7f4c1ccb85808"), "name" : "riya", "city" : "kochi", "phno" : "994345675" }
+{ "_id" : ObjectId("613623e847b7f4c1ccb85809"), "name" : "miya", "city" : "kannur", "phno" : "8888345675" }
+
