@@ -50,3 +50,5 @@ mysql> select @name_list;
 | jeeva;sebin;ain;arshid;aiden;rahul;Arun; |
 +------------------------------------------+
 1 row in set (0.00 sec)
+
+//verified
