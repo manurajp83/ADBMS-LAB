@@ -1,0 +1,125 @@
+NoSQL – RETRIEVING DATA
+
+
+1.Write a MongoDB query to display the customer documents having city ‘ekm’,’tvm’.
+
+> db.CUSTOMER.find({$or:[{"address":"tvm"},{"address":"ekm"}]}).pretty()
+{
+        "_id" : ObjectId("613cb534fae73354ef3a1da5"),
+        "name" : "arun",
+        "address" : "tvm",
+        "phno" : "65479"
+}
+{
+        "_id" : ObjectId("613cb534fae73354ef3a1da6"),
+        "name" : "aaron",
+        "address" : "ekm",
+        "phno" : "68523"
+}
+{
+        "_id" : ObjectId("613cb534fae73354ef3a1da7"),
+        "name" : "john",
+        "address" : "ekm",
+        "phno" : "74123"
+}
+
+------------------------------------------------------------------------------------------------
+
+2.Write a MongoDB query to display all customer documents who have age >50.
+
+> db.CUSTOMER.find({"age":{$gt:"50"}}).pretty()
+{
+        "_id" : ObjectId("613cb6a9fae73354ef3a1da8"),
+        "name" : "adidi",
+        "address" : "clt",
+        "age" : "60"
+}
+{
+        "_id" : ObjectId("613cb6a9fae73354ef3a1daa"),
+        "name" : "daisy",
+        "address" : "bnglr",
+        "age" : "55"
+}
+
+-------------------------------------------------------------------------------------------
+3.Write a MongoDB query to find customer documents who not live in ‘tvm’.
+
+
+> db.CUSTOMER.find({"city":{$ne:"tvm"}}).pretty()
+{
+        "_id" : ObjectId("61385cf2e2ebbb6c074a2d28"),
+        "name" : "Appu",
+        "address" : "eranakulam",
+        "phno" : "15845"
+}
+{
+        "_id" : ObjectId("61385d08e2ebbb6c074a2d29"),
+        "name" : "Anu",
+        "address" : "trivandrum",
+        "phno" : "15795"
+}
+{
+        "_id" : ObjectId("61385d31e2ebbb6c074a2d2a"),
+        "name" : "Arun",
+        "address" : "malappuram",
+        "phno" : "15985"
+}
+{
+        "_id" : ObjectId("613cb534fae73354ef3a1da5"),
+        "name" : "arun",
+        "address" : "tvm",
+        "phno" : "65479"
+}
+{
+        "_id" : ObjectId("613cb534fae73354ef3a1da6"),
+        "name" : "aaron",
+        "address" : "ekm",
+        "phno" : "68523"
+}
+{
+        "_id" : ObjectId("613cb534fae73354ef3a1da7"),
+        "name" : "john",
+        "address" : "ekm",
+        "phno" : "74123"
+}
+{
+        "_id" : ObjectId("613cb6a9fae73354ef3a1da8"),
+        "name" : "adidi",
+        "address" : "clt",
+        "age" : "60"
+}
+{
+        "_id" : ObjectId("613cb6a9fae73354ef3a1da9"),
+        "name" : "vineeth",
+        "address" : "ekm",
+        "age" : "40"
+}
+{
+        "_id" : ObjectId("613cb6a9fae73354ef3a1daa"),
+        "name" : "daisy",
+        "address" : "bnglr",
+        "age" : "55"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

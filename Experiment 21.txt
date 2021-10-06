@@ -1,0 +1,95 @@
+1. Write a MongoDB query to sort customer details in ascending order of their name.
+***********************************************************************************
+
+> use invoice
+switched to db invoice
+
+> show collections
+CUSTOMER
+PRODUCT
+
+> db.CUSTOMER.find().sort({name:1}).pretty()
+{
+        "_id" : ObjectId("61385d08e2ebbb6c074a2d29"),
+        "name" : "Anu",
+        "address" : "trivandrum",
+        "phno" : "15795"
+}
+{
+        "_id" : ObjectId("61385cf2e2ebbb6c074a2d28"),
+        "name" : "Appu",
+        "address" : "eranakulam",
+        "phno" : "15845"
+}
+{
+        "_id" : ObjectId("61385d31e2ebbb6c074a2d2a"),
+        "name" : "Arun",
+        "address" : "malappuram",
+        "phno" : "15985"
+}
+{
+        "_id" : ObjectId("613cb534fae73354ef3a1da6"),
+        "name" : "aaron",
+        "address" : "ekm",
+        "phno" : "68523"
+}
+{
+        "_id" : ObjectId("613cb6a9fae73354ef3a1da8"),
+        "name" : "adidi",
+        "address" : "clt",
+        "age" : "60"
+}
+{
+        "_id" : ObjectId("613cb534fae73354ef3a1da5"),
+        "name" : "arun",
+        "address" : "tvm",
+        "phno" : "65479"
+}
+{
+        "_id" : ObjectId("613cb6a9fae73354ef3a1daa"),
+        "name" : "daisy",
+        "address" : "bnglr",
+        "age" : "55"
+}
+{
+        "_id" : ObjectId("613cb534fae73354ef3a1da7"),
+        "name" : "john",
+        "address" : "ekm",
+        "phno" : "74123"
+}
+{
+        "_id" : ObjectId("613cb6a9fae73354ef3a1da9"),
+        "name" : "vineeth",
+        "address" : "ekm",
+        "age" : "40"
+}
+
+
+
+------------------------------------------------------------------------------------
+
+2. Write a MongoDB query to count number of customers in each city.
+*******************************************************************
+> db.CUSTOMER.aggregate([{$group:{_id:"$address",total:{$sum:1}}}])
+{ "_id" : "tvm", "total" : 1 }
+{ "_id" : "ekm", "total" : 3 }
+{ "_id" : "clt", "total" : 1 }
+{ "_id" : "trivandrum", "total" : 1 }
+{ "_id" : "bnglr", "total" : 1 }
+{ "_id" : "malappuram", "total" : 1 }
+{ "_id" : "eranakulam", "total" : 1 }
+
+
+-----------------------------------------------------------------------------------
+3. Write a MongoDB query to find minimum and maximum age in each city.
+**********************************************************************
+> db.CUSTOMER.aggregate([{$group:{_id:"$address",minimum_age:{$min:"$age"},maximum_age:{$max:"$age"}}}])
+{ "_id" : "eranakulam", "minimum_age" : null, "maximum_age" : null }
+{ "_id" : "malappuram", "minimum_age" : null, "maximum_age" : null }
+{ "_id" : "trivandrum", "minimum_age" : null, "maximum_age" : null }
+{ "_id" : "bnglr", "minimum_age" : "55", "maximum_age" : "55" }
+{ "_id" : "clt", "minimum_age" : "60", "maximum_age" : "60" }
+{ "_id" : "ekm", "minimum_age" : "40", "maximum_age" : "40" }
+{ "_id" : "tvm", "minimum_age" : null, "maximum_age" : null }
+
+

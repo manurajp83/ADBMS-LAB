@@ -1,0 +1,177 @@
+1.Write a MongoDB query to create a user “CUSTOMER1” and grant the read role in the INVOICE database
+
+> db.createUser({user:"CUSTOMER1",pwd:"customer1",roles:[{role:"read",db:"INVOICE"}]})
+Successfully added user: {
+        "user" : "CUSTOMER1",
+        "roles" : [
+                {
+                        "role" : "read",
+                        "db" : "INVOICE"
+                }
+        ]
+}
+
+
+
+
+-------------------------------------------------------------------------------------------------
+2.Write a MongoDB query to create the backup for the INVOICE database.
+
+Step1: open a command prompt and run mongo instance
+
+C:\Users\Amjad>mongod
+
+
+{"t":{"$date":"2021-09-24T09:59:16.721+05:30"},"s":"I",  "c":"NETWORK",  "id":4915701, "ctx":"-","msg":"Initialized wire specification","attr":{"spec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":13},"incomingInternalClient":{"minWireVersion":0,"maxWireVersion":13},"outgoing":{"minWireVersion":0,"maxWireVersion":13},"isInternalClient":true}}}
+{"t":{"$date":"2021-09-24T09:59:17.262+05:30"},"s":"I",  "c":"CONTROL",  "id":23285,   "ctx":"main","msg":"Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'"}
+{"t":{"$date":"2021-09-24T09:59:17.262+05:30"},"s":"W",  "c":"ASIO",     "id":22601,   "ctx":"main","msg":"No TransportLayer configured during NetworkInterface startup"}
+{"t":{"$date":"2021-09-24T09:59:17.264+05:30"},"s":"I",  "c":"NETWORK",  "id":4648602, "ctx":"main","msg":"Implicit TCP FastOpen in use."}
+{"t":{"$date":"2021-09-24T09:59:17.266+05:30"},"s":"W",  "c":"ASIO",     "id":22601,   "ctx":"main","msg":"No TransportLayer configured during NetworkInterface startup"}
+{"t":{"$date":"2021-09-24T09:59:17.266+05:30"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"main","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationDonorService","ns":"config.tenantMigrationDonors"}}
+{"t":{"$date":"2021-09-24T09:59:17.266+05:30"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"main","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationRecipientService","ns":"config.tenantMigrationRecipients"}}
+{"t":{"$date":"2021-09-24T09:59:17.267+05:30"},"s":"I",  "c":"CONTROL",  "id":4615611, "ctx":"initandlisten","msg":"MongoDB starting","attr":{"pid":11924,"port":27017,"dbPath":"C:/data/db/","architecture":"64-bit","host":"LAPTOP-1A2J8IP5"}}
+{"t":{"$date":"2021-09-24T09:59:17.267+05:30"},"s":"I",  "c":"CONTROL",  "id":23398,   "ctx":"initandlisten","msg":"Target operating system minimum version","attr":{"targetMinOS":"Windows 7/Windows Server 2008 R2"}}
+{"t":{"$date":"2021-09-24T09:59:17.267+05:30"},"s":"I",  "c":"CONTROL",  "id":23403,   "ctx":"initandlisten","msg":"Build Info","attr":{"buildInfo":{"version":"5.0.2","gitVersion":"6d9ec525e78465dcecadcff99cce953d380fedc8","modules":[],"allocator":"tcmalloc","environment":{"distmod":"windows","distarch":"x86_64","target_arch":"x86_64"}}}}
+{"t":{"$date":"2021-09-24T09:59:17.267+05:30"},"s":"I",  "c":"CONTROL",  "id":51765,   "ctx":"initandlisten","msg":"Operating System","attr":{"os":{"name":"Microsoft Windows 10","version":"10.0 (build 19042)"}}}
+{"t":{"$date":"2021-09-24T09:59:17.268+05:30"},"s":"I",  "c":"CONTROL",  "id":21951,   "ctx":"initandlisten","msg":"Options set by command line","attr":{"options":{}}}
+{"t":{"$date":"2021-09-24T09:59:17.272+05:30"},"s":"E",  "c":"CONTROL",  "id":20557,   "ctx":"initandlisten","msg":"DBException in initAndListen, terminating","attr":{"error":"NonExistentPath: Data directory C:\\data\\db\\ not found. Create the missing directory or specify another path using (1) the --dbpath command line option, or (2) by adding the 'storage.dbPath' option in the configuration file."}}
+{"t":{"$date":"2021-09-24T09:59:17.273+05:30"},"s":"I",  "c":"REPL",     "id":4784900, "ctx":"initandlisten","msg":"Stepping down the ReplicationCoordinator for shutdown","attr":{"waitTimeMillis":15000}}
+{"t":{"$date":"2021-09-24T09:59:17.277+05:30"},"s":"I",  "c":"COMMAND",  "id":4784901, "ctx":"initandlisten","msg":"Shutting down the MirrorMaestro"}
+{"t":{"$date":"2021-09-24T09:59:17.277+05:30"},"s":"I",  "c":"SHARDING", "id":4784902, "ctx":"initandlisten","msg":"Shutting down the WaitForMajorityService"}
+{"t":{"$date":"2021-09-24T09:59:17.278+05:30"},"s":"I",  "c":"NETWORK",  "id":20562,   "ctx":"initandlisten","msg":"Shutdown: going to close listening sockets"}
+{"t":{"$date":"2021-09-24T09:59:17.279+05:30"},"s":"I",  "c":"NETWORK",  "id":4784905, "ctx":"initandlisten","msg":"Shutting down the global connection pool"}
+{"t":{"$date":"2021-09-24T09:59:17.279+05:30"},"s":"I",  "c":"CONTROL",  "id":4784906, "ctx":"initandlisten","msg":"Shutting down the FlowControlTicketholder"}
+{"t":{"$date":"2021-09-24T09:59:17.280+05:30"},"s":"I",  "c":"-",        "id":20520,   "ctx":"initandlisten","msg":"Stopping further Flow Control ticket acquisitions."}
+{"t":{"$date":"2021-09-24T09:59:17.281+05:30"},"s":"I",  "c":"NETWORK",  "id":4784918, "ctx":"initandlisten","msg":"Shutting down the ReplicaSetMonitor"}
+{"t":{"$date":"2021-09-24T09:59:17.285+05:30"},"s":"I",  "c":"SHARDING", "id":4784921, "ctx":"initandlisten","msg":"Shutting down the MigrationUtilExecutor"}
+{"t":{"$date":"2021-09-24T09:59:17.286+05:30"},"s":"I",  "c":"ASIO",     "id":22582,   "ctx":"MigrationUtil-TaskExecutor","msg":"Killing all outstanding egress activity."}
+{"t":{"$date":"2021-09-24T09:59:17.287+05:30"},"s":"I",  "c":"COMMAND",  "id":4784923, "ctx":"initandlisten","msg":"Shutting down the ServiceEntryPoint"}
+{"t":{"$date":"2021-09-24T09:59:17.287+05:30"},"s":"I",  "c":"CONTROL",  "id":4784925, "ctx":"initandlisten","msg":"Shutting down free monitoring"}
+{"t":{"$date":"2021-09-24T09:59:17.288+05:30"},"s":"I",  "c":"CONTROL",  "id":4784927, "ctx":"initandlisten","msg":"Shutting down the HealthLog"}
+{"t":{"$date":"2021-09-24T09:59:17.289+05:30"},"s":"I",  "c":"CONTROL",  "id":4784928, "ctx":"initandlisten","msg":"Shutting down the TTL monitor"}
+{"t":{"$date":"2021-09-24T09:59:17.289+05:30"},"s":"I",  "c":"CONTROL",  "id":4784929, "ctx":"initandlisten","msg":"Acquiring the global lock for shutdown"}
+{"t":{"$date":"2021-09-24T09:59:17.290+05:30"},"s":"I",  "c":"-",        "id":4784931, "ctx":"initandlisten","msg":"Dropping the scope cache for shutdown"}
+{"t":{"$date":"2021-09-24T09:59:17.291+05:30"},"s":"I",  "c":"FTDC",     "id":4784926, "ctx":"initandlisten","msg":"Shutting down full-time data capture"}
+{"t":{"$date":"2021-09-24T09:59:17.291+05:30"},"s":"I",  "c":"CONTROL",  "id":20565,   "ctx":"initandlisten","msg":"Now exiting"}
+{"t":{"$date":"2021-09-24T09:59:17.292+05:30"},"s":"I",  "c":"CONTROL",  "id":23138,   "ctx":"initandlisten","msg":"Shutting down","attr":{"exitCode":100}}
+
+
+
+
+
+--------------------------------------------------------
+Step2: open another command prompt and run mongo shell
+-----------------------------------------------------
+C:\Users\Amjad>mongo
+
+MongoDB shell version v5.0.2
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("f8153b72-d56e-4d96-99b4-6f04f8d2f417") }
+MongoDB server version: 5.0.2
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+We recommend you begin using "mongosh".
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2021-09-23T21:25:33.136+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+--------------------------------------------------------------------------------------------
+Step 3: open another command prompt as administrator and give mongodb path and run mongodump
+--------------------------------------------------------------------------------------------
+
+C:\Program Files\MongoDB\Server\5.0\bin>mongodump
+2021-09-24T10:01:42.900+0530    writing admin.system.users to dump\admin\system.users.bson
+2021-09-24T10:01:42.906+0530    done dumping admin.system.users (2 documents)
+2021-09-24T10:01:42.906+0530    writing admin.system.version to dump\admin\system.version.bson
+2021-09-24T10:01:42.907+0530    done dumping admin.system.version (2 documents)
+2021-09-24T10:01:42.907+0530    writing invoice.PRODUCT to dump\invoice\PRODUCT.bson
+2021-09-24T10:01:42.909+0530    done dumping invoice.PRODUCT (3 documents)
+2021-09-24T10:01:43.223+0530    writing invoice.CUSTOMER to dump\invoice\CUSTOMER.bson
+2021-09-24T10:01:43.226+0530    done dumping invoice.CUSTOMER (9 documents)
+
+Output->
+*A bin foler is automatically created
+*Inside this folder we can see all the dbs
+
+*delete dump folder and then ,we started to backup INVOICE database
+
+
+-----------------------------------------------------------------------------
+Step 4: reopen adminitrator command
+---------------------------------------------------------------------------
+C:\Program Files\MongoDB\Server\5.0\bin>mongodump --db invoice
+
+2021-09-28T21:00:55.655+0530    writing invoice.PRODUCT to dump\invoice\PRODUCT.bson
+2021-09-28T21:00:55.659+0530    done dumping invoice.PRODUCT (3 documents)
+2021-09-28T21:00:55.958+0530    writing invoice.CUSTOMER to dump\invoice\CUSTOMER.bson
+2021-09-28T21:00:55.959+0530    done dumping invoice.CUSTOMER (9 documents)
+
+Now the bin folder automatically created the dump folder
+
+Inside the dump folder we can see INVOICE db only
+
+
+-------------------------------------------------------------------------------------
+3.Write a MongoDB query to restore a particular collection.
+-------------------------------------------------------------------------------------
+------
+Step1
+------
+> show dbs
+admin    0.000GB
+config   0.000GB
+invoice  0.000GB
+local    0.000GB
+
+> use invoice
+switched to db invoice
+
+> db.dropDatabase()
+{ "ok" : 1 }
+
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+*Here we dropped the invoice
+
+-----------------------------------------------------------
+Step 2-reopen administrator command and restore INVOICE
+-----------------------------------------------------------
+
+C:\Program Files\MongoDB\Server\5.0\bin>mongorestore
+2021-09-28T21:05:00.145+0530    using default 'dump' directory
+2021-09-28T21:05:00.146+0530    preparing collections to restore from
+2021-09-28T21:05:00.150+0530    reading metadata for invoice.CUSTOMER from dump\invoice\CUSTOMER.metadata.json
+2021-09-28T21:05:00.150+0530    reading metadata for invoice.PRODUCT from dump\invoice\PRODUCT.metadata.json
+2021-09-28T21:05:00.460+0530    restoring invoice.CUSTOMER from dump\invoice\CUSTOMER.bson
+2021-09-28T21:05:00.471+0530    restoring invoice.PRODUCT from dump\invoice\PRODUCT.bson
+2021-09-28T21:05:00.472+0530    finished restoring invoice.CUSTOMER (9 documents, 0 failures)
+2021-09-28T21:05:00.489+0530    finished restoring invoice.PRODUCT (3 documents, 0 failures)
+2021-09-28T21:05:00.489+0530    restoring users from dump\admin\system.users.bson
+2021-09-28T21:05:00.512+0530    Failed: restore error: error running merge command: (Location40414) BSON field '_mergeAuthzCollections.tempRolesCollection' is missing but a required field
+2021-09-28T21:05:00.512+0530    12 document(s) restored successfully. 0 document(s) failed to restore.
+
+> show dbs
+admin    0.000GB
+config   0.000GB
+invoice  0.000GB
+local    0.000GB
+
